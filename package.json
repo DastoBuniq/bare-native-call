@@ -3,11 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "images": "node scripts/images.js"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -28,8 +24,5 @@
   },
   "jest": {
     "preset": "react-native"
-  },
-  "scripts": {
-    "images": "node scripts/images.js"
   }
 }
