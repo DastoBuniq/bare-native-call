@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 import {StyleSheet, SafeAreaView, FlatList} from 'react-native';
 import {SearchBar, ListItem, Avatar} from 'react-native-elements';
 import Contact from './components/Contact';
+import {MenuProvider} from 'react-native-popup-menu';
 
 const list = [
   {
@@ -224,27 +225,29 @@ const App = () => {
   const renderItem = ({item}) => <Contact item={item} />;
 
   return (
-    <SafeAreaView style={styles.Safe}>
-      <SearchBar
-        placeholder="Cerca qualcuno"
-        onChangeText={setSearch}
-        value={search}
-        platform="ios"
-      />
+    <MenuProvider>
+      <SafeAreaView style={styles.Safe}>
+        <SearchBar
+          placeholder="Cerca qualcuno"
+          onChangeText={setSearch}
+          value={search}
+          platform="ios"
+        />
 
-      <FlatList
-        data={list}
-        renderItem={renderItem}
-        keyExtractor={() => Math.random().toString()}
-      />
-    </SafeAreaView>
+        <FlatList
+          data={list}
+          renderItem={renderItem}
+          keyExtractor={() => Math.random().toString()}
+        />
+      </SafeAreaView>
+    </MenuProvider>
   );
 };
 
 const styles = StyleSheet.create({
-  Safe:{
+  Safe: {
     flex: 1,
-  }
+  },
 });
 
 export default App;
