@@ -28,5 +28,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "scripts": {
+    "images": "node scripts/images.js"
   }
 }

@@ -25,15 +25,12 @@ export default function Contact(props) {
     <Menu>
       <MenuTrigger text="..." />
       <MenuOptions>
-        <MenuOption onSelect={() => alert('Save')} text="Save" />
+        <MenuOption onSelect={() => alert('Save')} text="Modifica" />
+        <MenuOption onSelect={() => alert('Copia')} text="Copia" />
+        <MenuOption onSelect={() => alert('view Info')} text="Vedi info" />
         <MenuOption onSelect={() => alert('Delete')}>
-          <Text style={{color: 'red'}}>Delete</Text>
+          <Text style={{color: 'red'}}>Elimina</Text>
         </MenuOption>
-        <MenuOption
-          onSelect={() => alert('Not called')}
-          disabled={true}
-          text="Disabled"
-        />
       </MenuOptions>
     </Menu>
   );
