@@ -8,7 +8,7 @@ import {
   Text,
   SafeAreaView,
 } from 'react-native';
-import {ListItem, Avatar, Image} from 'react-native-elements';
+import {ListItem, Avatar, Image, Icon} from 'react-native-elements';
 import {
   Menu,
   MenuOptions,
@@ -17,12 +17,13 @@ import {
 } from 'react-native-popup-menu';
 // import OptionsMenu from 'react-native-option-menu';
 // import images from './../../../assets/more.png';
+let dots = <Icon name={'more-vert'} type={'material'} />;
 
 export default function Contact(props) {
   const [modalVisible, setModalVisible] = useState(false);
   const menu = (
     <Menu>
-      <MenuTrigger text="..." />
+      <MenuTrigger children={dots} />
       <MenuOptions>
         <MenuOption onSelect={() => alert('Save')} text="Modifica" />
         <MenuOption onSelect={() => alert('Copia')} text="Copia" />

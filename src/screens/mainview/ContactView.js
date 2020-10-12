@@ -230,7 +230,7 @@ const ContactView = () => {
     <MenuProvider>
       <SafeAreaView style={styles.Safe}>
         <SearchBar
-          placeholder="Cerca qualcuno"
+          placeholder="Cerca qualcuno io"
           onChangeText={setSearch}
           value={search}
           platform="ios"
