@@ -5,6 +5,9 @@
  * @format
  * @flow strict-local
  */
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import React, {useState} from 'react';
 import {StyleSheet, SafeAreaView, FlatList, View} from 'react-native';
@@ -12,6 +15,7 @@ import {SearchBar, ListItem, Avatar} from 'react-native-elements';
 // import Contact from './components/Contact';
 import {MenuProvider} from 'react-native-popup-menu';
 import ContactView from './src/screens/mainview/ContactView';
+import InfoView from './src/screens/infoview/InfoView';
 
 const list = [
   {
@@ -220,6 +224,7 @@ const list = [
   },
 ];
 
+const Stack = createStackNavigator();
 const App = () => {
   const [search, setSearch] = useState('');
 
@@ -242,9 +247,12 @@ const App = () => {
     //     />
     //   </SafeAreaView>
     // </MenuProvider>
-    <>
-      <ContactView />
-    </>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Main">
+        <Stack.Screen name="Main" component={ContactView} />
+        <Stack.Screen name="Info" component={InfoView} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
