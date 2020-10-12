@@ -27,7 +27,7 @@ export default function Contact(props) {
       <MenuOptions>
         <MenuOption onSelect={() => alert('Save')} text="Modifica" />
         <MenuOption onSelect={() => alert('Copia')} text="Copia" />
-        <MenuOption onSelect={() => alert('view Info')} text="Vedi info" />
+        <MenuOption onSelect={() => props.navigation.navigate('Settings')} text="Vedi info" />
         <MenuOption onSelect={() => alert('Delete')}>
           <Text style={{color: 'red'}}>Elimina</Text>
         </MenuOption>

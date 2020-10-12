@@ -221,10 +221,10 @@ const list = [
   },
 ];
 
-const ContactView = () => {
+const ContactView = ({navigation}) => {
   const [search, setSearch] = useState('');
 
-  const renderItem = ({item}) => <Contact item={item} />;
+  const renderItem = ({item}) => <Contact item={item} navigation={navigation}/>;
 
   return (
     <MenuProvider>
@@ -249,6 +249,7 @@ const ContactView = () => {
             type="material"
             color="#517fa4"
             size={40}
+            onPress={() => navigation.navigate('Settings', {p1: 'damiano', p2:'stopo'})}
           />
           <View style={{flexDirection: 'row'}}>
             <CustomButton

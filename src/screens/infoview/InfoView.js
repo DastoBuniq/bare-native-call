@@ -2,10 +2,11 @@ import React from 'react';
 import {StyleSheet, View, Text, SafeAreaView} from 'react-native';
 
 
-const CustomButton = (props) => {
+const InfoView = (props) => {
+
   return (
     <SafeAreaView>
-        <Text>Info view</Text>
+        <Text>Info View</Text>
     </SafeAreaView>
   );
 };
@@ -13,4 +14,4 @@ const CustomButton = (props) => {
 const styles = StyleSheet.create({
 });
 
-export default CustomButton;
+export default InfoView;

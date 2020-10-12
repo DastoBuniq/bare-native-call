@@ -15,7 +15,7 @@ import {SearchBar, ListItem, Avatar} from 'react-native-elements';
 // import Contact from './components/Contact';
 import {MenuProvider} from 'react-native-popup-menu';
 import ContactView from './src/screens/mainview/ContactView';
-import InfoView from './src/screens/infoview/InfoView';
+import SettingsView from './src/screens/settingsview/SettingsView';
 
 const list = [
   {
@@ -249,8 +249,16 @@ const App = () => {
     // </MenuProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Main">
-        <Stack.Screen name="Main" component={ContactView} />
-        <Stack.Screen name="Info" component={InfoView} />
+        <Stack.Screen
+          name="Main"
+          component={ContactView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsView}
+          initialParams={{p1: 'damiano', p2: 'stopo'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

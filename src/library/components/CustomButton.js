@@ -7,7 +7,7 @@ const CustomButton = (props) => {
     <TouchableHighlight
       activeOpacity={0.6}
       underlayColor="transparent"
-      onPress={() => null}>
+      onPress={props.onPress}>
       <Icon
         name={props.name}
         type={props.type}
