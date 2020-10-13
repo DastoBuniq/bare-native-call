@@ -16,6 +16,7 @@ import {SearchBar, ListItem, Avatar} from 'react-native-elements';
 import {MenuProvider} from 'react-native-popup-menu';
 import ContactView from './src/screens/mainview/ContactView';
 import SettingsView from './src/screens/settingsview/SettingsView';
+import EditView from './src/screens/editview/EditView';
 
 const list = [
   {
@@ -248,7 +249,7 @@ const App = () => {
     //   </SafeAreaView>
     // </MenuProvider>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
+      <Stack.Navigator initialRouteName="Edit">
         <Stack.Screen
           name="Main"
           component={ContactView}
@@ -258,6 +259,11 @@ const App = () => {
           name="Settings"
           component={SettingsView}
           initialParams={{p1: 'damiano', p2: 'stopo'}}
+        />
+        <Stack.Screen
+          name="Edit"
+          component={EditView}
+          options={{title: 'Edita'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
