@@ -48,12 +48,14 @@ const EditView = (props) => {
           onChangeText={(text) => setInfo({...personalInfo, number: text})}
           placeholder="Numero di telefono"
           style={styles.inputField}
+          keyboardType="phone-pad"
         />
         <TextInput
           value={personalInfo.mail}
           onChangeText={(text) => setInfo({...personalInfo, mail: text})}
           placeholder="Mail"
           style={styles.inputField}
+          keyboardType="email-address"
         />
         <TextInput
           value={personalInfo.address}
