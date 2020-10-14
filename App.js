@@ -6,7 +6,11 @@
  * @flow strict-local
  */
 import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DarkTheme as NavigationDarkTheme,
+  DefaultTheme as NavigationDefaultTheme,
+} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import React, {useState} from 'react';
@@ -17,6 +21,16 @@ import {MenuProvider} from 'react-native-popup-menu';
 import ContactView from './src/screens/mainview/ContactView';
 import SettingsView from './src/screens/settingsview/SettingsView';
 import EditView from './src/screens/editview/EditView';
+import {
+  DarkTheme as PaperDarkTheme,
+  DefaultTheme as PaperDefaultTheme,
+  Provider as PaperProvider,
+} from 'react-native-paper';
+import merge from 'deepmerge';
+import {PreferenceProvider, PreferencesContext} from './PreferencesContext';
+
+const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
+const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
 
 const list = [
   {
@@ -227,53 +241,50 @@ const list = [
 
 const Stack = createStackNavigator();
 const App = () => {
-  const [search, setSearch] = useState('');
 
-  // const renderItem = ({item}) => <Contact item={item} />;
+  const [isThemeDark, setIsThemeDark] = useState(true);
+  let theme = isThemeDark ? CombinedDarkTheme : CombinedDefaultTheme;
+
+  const toggleTheme = React.useCallback(() => {
+    return setIsThemeDark(!isThemeDark);
+  }, [isThemeDark]);
+
+  const preferences = React.useMemo(
+    () => ({
+      toggleTheme,
+      isThemeDark,
+    }),
+    [isThemeDark, toggleTheme ],
+  );
 
   return (
-    // <MenuProvider>
-    //   <SafeAreaView style={styles.Safe}>
-    //     <SearchBar
-    //       placeholder="Cerca qualcuno"
-    //       onChangeText={setSearch}
-    //       value={search}
-    //       platform="ios"
-    //     />
-
-    //     <FlatList
-    //       data={list}
-    //       renderItem={renderItem}
-    //       keyExtractor={() => Math.random().toString()}
-    //     />
-    //   </SafeAreaView>
-    // </MenuProvider>
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Edit">
-        <Stack.Screen
-          name="Main"
-          component={ContactView}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Settings"
-          component={SettingsView}
-          initialParams={{p1: 'damiano', p2: 'stopo'}}
-        />
-        <Stack.Screen
-          name="Edit"
-          component={EditView}
-          options={{title: 'Edita'}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <PreferencesContext.Provider value={preferences}>
+      <PaperProvider theme={CombinedDefaultTheme}>
+        <NavigationContainer theme={CombinedDefaultTheme}>
+          <Stack.Navigator initialRouteName="Main">
+            <Stack.Screen
+              name="Main"
+              component={ContactView}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={SettingsView}
+              initialParams={{p1: 'damiano', p2: 'stopo'}}
+            />
+            <Stack.Screen
+              name="Edit"
+              component={EditView}
+              options={{title: 'Edita'}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    </PreferencesContext.Provider>
   );
 };
 
-const styles = StyleSheet.create({
-  Safe: {
-    flex: 1,
-  },
-});
+
+const styles = StyleSheet.create({});
 
 export default App;

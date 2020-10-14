@@ -257,6 +257,7 @@ const ContactView = ({navigation}) => {
               type="material"
               color="#517fa4"
               size={45}
+              onPress={() => navigation.navigate('Edit')}
             />
             <CustomButton
               name="person-add"
