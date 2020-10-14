@@ -15,6 +15,9 @@ import {MenuProvider} from 'react-native-popup-menu';
 import images from 'res/images';
 import {Searchbar} from 'react-native-paper';
 import {List, IconButton, Avatar} from 'react-native-paper';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 const list = [
   {
