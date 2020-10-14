@@ -10,6 +10,7 @@ import View3 from './View3';
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useTheme} from 'react-native-paper';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -37,11 +38,12 @@ const MainView = () => {
 };
 
 const MainTabScreen = () => {
+  const theme = useTheme();
   return (
     <Tab.Navigator
       initialRouteName="Main"
-      activeColor="#e91e63"
-      style={{backgroundColor: 'tomato'}}>
+      activeColor={theme.colors.onBackground}
+      barStyle={{backgroundColor: theme.colors.background}}>
       <Tab.Screen
         name="Main"
         component={MainView}

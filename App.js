@@ -22,6 +22,7 @@ import {
 import merge from 'deepmerge';
 import {PreferenceProvider, PreferencesContext} from './PreferencesContext';
 import MainTabScreen from './src/screens/mainview/MainView';
+import {DrawerContent} from './src/screens/DrowerContent';
 
 const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
@@ -48,7 +49,9 @@ const App = () => {
     <PreferencesContext.Provider value={preferences}>
       <PaperProvider theme={CombinedDefaultTheme}>
         <NavigationContainer theme={CombinedDefaultTheme}>
-          <Drawer.Navigator initialRouteName="Main">
+          <Drawer.Navigator
+            initialRouteName="Main"
+            drawerContent={(props) => <DrawerContent {...props} />}>
             {/* <Stack.Screen
               name="Main"
               component={ContactView}
