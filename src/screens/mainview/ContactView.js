@@ -8,11 +8,13 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
-import {SearchBar, ListItem, Avatar, Icon} from 'react-native-elements';
+import {ListItem, Avatar, Icon} from 'react-native-elements';
 import Contact from 'lib/components/Contact';
 import CustomButton from 'lib/components/CustomButton';
 import {MenuProvider} from 'react-native-popup-menu';
 import images from 'res/images';
+import { Searchbar } from 'react-native-paper';
+
 
 const list = [
   {
@@ -229,11 +231,10 @@ const ContactView = ({navigation}) => {
   return (
     <MenuProvider>
       <SafeAreaView style={styles.Safe}>
-        <SearchBar
+        <Searchbar
           placeholder="Cerca qualcuno io"
           onChangeText={setSearch}
           value={search}
-          platform="ios"
         />
 
         <View style={styles.listV}>
@@ -285,6 +286,7 @@ const styles = StyleSheet.create({
   },
   listV: {
     flex: 1,
+    marginTop: 10,
   },
   ico: {
     marginLeft: 15,

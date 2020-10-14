@@ -257,6 +257,7 @@ const App = () => {
     [isThemeDark, toggleTheme ],
   );
 
+
   return (
     <PreferencesContext.Provider value={preferences}>
       <PaperProvider theme={CombinedDefaultTheme}>
@@ -270,7 +271,7 @@ const App = () => {
             <Stack.Screen
               name="Settings"
               component={SettingsView}
-              initialParams={{p1: 'damiano', p2: 'stopo'}}
+              initialParams={{p1: 'damin', p2: 'stopo'}}
             />
             <Stack.Screen
               name="Edit"

@@ -1,14 +1,8 @@
 import React, {useState} from 'react';
 import AvatarCustom from 'lib/components/AvatarCustom';
-import {
-  StyleSheet,
-  View,
-  SafeAreaView,
-  ScrollView,
-  TextInput,
-  Text,
-} from 'react-native';
+import {StyleSheet, View, SafeAreaView, ScrollView, Text} from 'react-native';
 import {ListItem, Image, Icon} from 'react-native-elements';
+import {TextInput} from 'react-native-paper';
 
 const EditView = (props) => {
   const [personalInfo, setInfo] = useState({
@@ -26,41 +20,42 @@ const EditView = (props) => {
       </View>
       <View style={styles.fieldsArea}>
         <TextInput
+          label="Nome"
           value={personalInfo.name}
           onChangeText={(text) => setInfo({...personalInfo, name: text})}
-          placeholder="Nome"
           style={styles.inputField}
         />
         <TextInput
+          label="Cognome"
           value={personalInfo.surname}
           onChangeText={(text) => setInfo({...personalInfo, surname: text})}
-          placeholder="Cognome"
           style={styles.inputField}
         />
         <TextInput
           value={personalInfo.title}
           onChangeText={(text) => setInfo({...personalInfo, title: text})}
-          placeholder="Titolo"
+          label="Titolo"
           style={styles.inputField}
         />
+
         <TextInput
           value={personalInfo.number}
           onChangeText={(text) => setInfo({...personalInfo, number: text})}
-          placeholder="Numero di telefono"
+          label="Numero di telefono"
           style={styles.inputField}
           keyboardType="phone-pad"
         />
         <TextInput
           value={personalInfo.mail}
           onChangeText={(text) => setInfo({...personalInfo, mail: text})}
-          placeholder="Mail"
+          label="Mail"
           style={styles.inputField}
           keyboardType="email-address"
         />
         <TextInput
           value={personalInfo.address}
           onChangeText={(text) => setInfo({...personalInfo, address: text})}
-          placeholder="Indirizzo"
+          label="Indirizzo"
           style={styles.inputField}
         />
       </View>
@@ -79,15 +74,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'baseline',
     marginTop: 10,
+    height: 90,
   },
   fieldsArea: {},
   inputField: {
-    borderColor: 'gray',
-    borderRadius: 5,
-    fontSize: 20, 
-    borderWidth: 1,
-    paddingLeft: 3,
-    margin: 10,
+    margin: 5,
   },
 });
 
