@@ -8,13 +8,13 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
-import {ListItem, Avatar, Icon} from 'react-native-elements';
+import {ListItem, Icon} from 'react-native-elements';
 import Contact from 'lib/components/Contact';
 import CustomButton from 'lib/components/CustomButton';
 import {MenuProvider} from 'react-native-popup-menu';
 import images from 'res/images';
-import { Searchbar } from 'react-native-paper';
-
+import {Searchbar} from 'react-native-paper';
+import {List, IconButton, Avatar} from 'react-native-paper';
 
 const list = [
   {
@@ -226,7 +226,16 @@ const list = [
 const ContactView = ({navigation}) => {
   const [search, setSearch] = useState('');
 
-  const renderItem = ({item}) => <Contact item={item} navigation={navigation}/>;
+  const renderItem = ({item}) => (
+    <Contact item={item} navigation={navigation} />
+  );
+  const LI = (title, desc) => {
+    <List.Item
+      title={title}
+      description={desc}
+      left={(props) => <List.Icon icon="group-add" />}
+    />;
+  };
 
   return (
     <MenuProvider>
@@ -243,6 +252,20 @@ const ContactView = ({navigation}) => {
             renderItem={renderItem}
             keyExtractor={() => Math.random().toString()}
           />
+          {/* {list.map((val) => renderItem(val))} */}
+          {/* <List.Item
+            title="asd"
+            description="gag"
+            right={() => (
+              <IconButton
+                icon="dots-vertical"
+                onPress={() => console.warn('Pressed')}
+              />
+            )}
+            left={()=>(
+              <Avatar.Image source={{uri:'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'}}/>
+            )}
+          /> */}
         </View>
         <View style={styles.bottomBar}>
           <CustomButton
@@ -250,7 +273,9 @@ const ContactView = ({navigation}) => {
             type="material"
             color="#517fa4"
             size={40}
-            onPress={() => navigation.navigate('Settings', {p1: 'damiano', p2:'stopo'})}
+            onPress={() =>
+              navigation.navigate('Settings', {p1: 'damiano', p2: 'stopo'})
+            }
           />
           <View style={{flexDirection: 'row'}}>
             <CustomButton
@@ -286,7 +311,6 @@ const styles = StyleSheet.create({
   },
   listV: {
     flex: 1,
-    marginTop: 10,
   },
   ico: {
     marginLeft: 15,
