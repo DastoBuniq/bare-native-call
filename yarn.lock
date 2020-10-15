@@ -5714,6 +5714,11 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-contacts@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-contacts/-/react-native-contacts-6.0.1.tgz#ca308101532e7385fbdd3ef75632073d3a60bbc8"
+  integrity sha512-wFnkh6Hd/SqeISeK2lJ2PDesTMbQn3Sp5d8+ebNmhiN9NhGINcnhtMPr7/zNRP5JfnT5mRDHdLdn10/AIcTfvw==
+
 react-native-elements@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-2.3.2.tgz#f6b974127a3484bb46ebd98fbc012fb2208decd7"

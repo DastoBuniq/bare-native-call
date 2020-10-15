@@ -11,6 +11,7 @@ target 'MyTestApp' do
   target 'MyTestAppTests' do
     inherit! :complete
     # Pods for testing
+    pod 'react-native-contacts', :path => '../node_modules/react-native-contacts'
   end
 
   # Enables Flipper.

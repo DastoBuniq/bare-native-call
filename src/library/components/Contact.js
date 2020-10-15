@@ -9,21 +9,28 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {ListItem, Image, Icon} from 'react-native-elements';
-import {
-  Menu,
-  MenuOptions,
-  MenuOption,
-  MenuTrigger,
-} from 'react-native-popup-menu';
+import {MenuOptions, MenuOption, MenuTrigger} from 'react-native-popup-menu';
 
-import {List, IconButton, Avatar, Divider, useTheme} from 'react-native-paper';
+import {
+  List,
+  IconButton,
+  Avatar,
+  Divider,
+  useTheme,
+  Menu,
+} from 'react-native-paper';
 // import OptionsMenu from 'react-native-option-menu';
 // import images from './../../../assets/more.png';
-let dots = <List.Icon icon="dots-vertical" />;
+let dots = <List.Item icon="dots-vertical" />;
 
 export default function Contact(props) {
   const [modalVisible, setModalVisible] = useState(false);
-  const menu = (
+  const [visible, setVisible] = React.useState(false);
+
+  const openMenu = () => setVisible(true);
+
+  const closeMenu = () => setVisible(false);
+  const menui = (
     <Menu>
       <MenuTrigger children={dots} />
       <MenuOptions>
@@ -38,6 +45,29 @@ export default function Contact(props) {
         </MenuOption>
       </MenuOptions>
     </Menu>
+  );
+  const menu = (
+    <View>
+      <Menu
+        visible={visible}
+        onDismiss={closeMenu}
+        anchor={<IconButton icon="dots-vertical" onPress={openMenu} />}>
+        <Menu.Item
+          onPress={() => {
+            closeMenu();
+            props.navigation.navigate('Settings');
+          }}
+          title="Settings"
+        />
+        <Menu.Item onPress={() => {closeMenu()}} title="Nulla" />
+        <Divider />
+        <Menu.Item
+          onPress={() => {closeMenu()}}
+          title="Elimina"
+          titleStyle={{color: 'red'}}
+        />
+      </Menu>
+    </View>
   );
   return (
     // <View style={styles.ContactRow}>
